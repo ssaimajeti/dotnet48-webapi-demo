@@ -1,0 +1,3 @@
+# Harness values file for dotnet48-webapi-demo
+replicas: 1
+image: <+artifacts.primary.image>
