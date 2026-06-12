@@ -1,0 +1,19 @@
+# Default values for dotnet48-webapi-demo
+replicaCount: 1
+
+# Image will be replaced by Harness during deployment
+image: <+artifacts.primary.image>
+
+# Service configuration
+service:
+  type: ClusterIP
+  port: 80
+
+# Resource limits
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "250m"
+  limits:
+    memory: "1Gi"
+    cpu: "500m"
