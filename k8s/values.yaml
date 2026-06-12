@@ -1,0 +1,16 @@
+# Default values for dotnet48-webapi-demo
+
+# Container image - Harness artifact expression
+image: <+artifacts.primary.image>
+
+# Number of replicas
+replicaCount: 1
+
+# Resource requests and limits
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "250m"
+  limits:
+    memory: "1Gi"
+    cpu: "500m"
