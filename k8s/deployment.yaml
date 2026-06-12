@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet48-webapi-demo
+  labels:
+    app: dotnet48-webapi-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet48-webapi-demo
+  template:
+    metadata:
+      labels:
+        app: dotnet48-webapi-demo
+    spec:
+      containers:
+      - name: dotnet48-webapi-demo
+        image: {{ .Values.image }}
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
