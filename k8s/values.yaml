@@ -1,0 +1,19 @@
+# Harness artifact image
+image: <+artifacts.primary.image>
+
+# Application configuration
+app:
+  name: dotnet48-webapi-demo
+  port: 80
+
+# Resource configuration
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+# Replica configuration
+replicaCount: 1
